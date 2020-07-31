@@ -1,7 +1,7 @@
 // @ts-nocheck
 function setup() {
   createCanvas(400, 400);
-  mpg.merger = [MP.vignette()];
+  mpg.merger = [new MP.NoiseDisplacement(), MP.vignette()];
 }
 
 function draw() {
@@ -11,4 +11,11 @@ function draw() {
 
 function mouseClicked() {
   console.log("test");
+}
+
+function mouseMoved() {
+  //ellipse(mouseX, mouseY, 5, 5);
+  //console.log("p5", mouseX, mouseY);
+  // prevent default
+  return false;
 }

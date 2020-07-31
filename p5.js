@@ -1,3 +1,4 @@
+// @ts-nocheck
 /*! p5.js v1.1.9 July 22, 2020 */
 (function(f) {
   if (typeof exports === 'object' && typeof module !== 'undefined') {

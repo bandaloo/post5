@@ -1,3 +1,4 @@
+// @ts-nocheck
 const mpg = {
   replaced: false,
   orig: null,
@@ -6,6 +7,9 @@ const mpg = {
   verbosity: 1,
   merger: [],
   __merger: null,
+  __startTime: 0,
+  __date: null,
+  __mousePos: { x: 0, y: 0 },
 };
 
 function mpInit() {
@@ -15,6 +19,8 @@ function mpInit() {
 function mpPre() {
   if (mpg.replaced) return;
   if (mpg.verbosity > 0) console.log("mp pre x1");
+
+  mpg.__startTime = new Date().getTime();
 
   mpg.orig = document.getElementById("defaultCanvas0");
 
@@ -51,14 +57,25 @@ function mpPre() {
 
   mpg.orig.style.visibility = "hidden";
 
+  mpg.canvas.addEventListener("mousemove", (e) => {
+    const rect = mpg.orig.getBoundingClientRect();
+    mpg.__mousePos.x =
+      (mpg.canvas.width * (e.clientX - rect.left)) / rect.width;
+    mpg.__mousePos.y =
+      (mpg.canvas.height * (rect.height - (e.clientY - rect.top))) /
+      rect.height;
+
+    console.log(mpg.__mousePos);
+  });
+
   mpg.replaced = true;
 }
 
-function mpPost() {
+function mpPost(t) {
   if (mpg.verbosity > 1) console.log("mp post");
   if (!mpg.merger) return;
-
-  mpg.__merger.draw(0);
+  const time = mpg.__startTime - new Date().getTime();
+  mpg.__merger.draw(time / 1000, mpg.__mousePos.x, mpg.__mousePos.y);
 }
 
 p5.prototype.registerMethod("pre", mpPre);
