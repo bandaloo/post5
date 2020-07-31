@@ -2,6 +2,7 @@
 (function(){function r(e,n,t){function o(i,f){if(!n[i]){if(!e[i]){var c="function"==typeof require&&require;if(!f&&c)return c(i,!0);if(u)return u(i,!0);var a=new Error("Cannot find module '"+i+"'");throw a.code="MODULE_NOT_FOUND",a}var p=n[i]={exports:{}};e[i][0].call(p.exports,function(r){var n=e[i][1][r];return o(n||r)},p,p.exports,r,e,n,t)}return n[i].exports}for(var u="function"==typeof require&&require,i=0;i<t.length;i++)o(t[i]);return o}return r})()({1:[function(require,module,exports){
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.blurandtrace = exports.BlurAndTrace = void 0;
 const merge_pass_1 = require("@bandaloo/merge-pass");
 class BlurAndTrace extends merge_pass_1.EffectLoop {
     constructor(brightness, blurSize, reps, taps, samplerNum, useDepth) {
@@ -34,21 +35,8 @@ exports.blurandtrace = blurandtrace;
 
 },{"@bandaloo/merge-pass":61}],2:[function(require,module,exports){
 "use strict";
-var __importStar = (this && this.__importStar) || function (mod) {
-    if (mod && mod.__esModule) return mod;
-    var result = {};
-    if (mod != null) for (var k in mod) if (Object.hasOwnProperty.call(mod, k)) result[k] = mod[k];
-    result["default"] = mod;
-    return result;
-};
 Object.defineProperty(exports, "__esModule", { value: true });
-// @ts-nocheck
-const MP = __importStar(require("./index"));
-window.MP = MP;
-
-},{"./index":4}],3:[function(require,module,exports){
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
+exports.foggyrays = exports.FoggyRaysExpr = void 0;
 const merge_pass_1 = require("@bandaloo/merge-pass");
 class FoggyRaysExpr extends merge_pass_1.WrappedExpr {
     constructor(period, speed, throwDistance, numSamples, samplerNum, convertDepthColor) {
@@ -100,24 +88,31 @@ function foggyrays(period = merge_pass_1.mut(100), speed = merge_pass_1.mut(1), 
 }
 exports.foggyrays = foggyrays;
 
-},{"@bandaloo/merge-pass":61}],4:[function(require,module,exports){
+},{"@bandaloo/merge-pass":61}],3:[function(require,module,exports){
 "use strict";
-function __export(m) {
-    for (var p in m) if (!exports.hasOwnProperty(p)) exports[p] = m[p];
-}
+var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    Object.defineProperty(o, k2, { enumerable: true, get: function() { return m[k]; } });
+}) : (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    o[k2] = m[k];
+}));
+var __exportStar = (this && this.__exportStar) || function(m, exports) {
+    for (var p in m) if (p !== "default" && !exports.hasOwnProperty(p)) __createBinding(exports, m, p);
+};
 Object.defineProperty(exports, "__esModule", { value: true });
-__export(require("./foggyrays"));
-__export(require("./vignette"));
-__export(require("./blurandtrace"));
-__export(require("./lightbands"));
-__export(require("./noisedisplacement"));
-__export(require("./oldfilm"));
-__export(require("./kaleidoscope"));
-__export(require("@bandaloo/merge-pass"));
+__exportStar(require("./foggyrays"), exports);
+__exportStar(require("./vignette"), exports);
+__exportStar(require("./blurandtrace"), exports);
+__exportStar(require("./lightbands"), exports);
+__exportStar(require("./noisedisplacement"), exports);
+__exportStar(require("./oldfilm"), exports);
+__exportStar(require("./kaleidoscope"), exports);
 
-},{"./blurandtrace":1,"./foggyrays":3,"./kaleidoscope":5,"./lightbands":6,"./noisedisplacement":7,"./oldfilm":8,"./vignette":9,"@bandaloo/merge-pass":61}],5:[function(require,module,exports){
+},{"./blurandtrace":1,"./foggyrays":2,"./kaleidoscope":4,"./lightbands":5,"./noisedisplacement":6,"./oldfilm":7,"./vignette":9}],4:[function(require,module,exports){
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.kaleidoscope = exports.Kaleidoscope = void 0;
 const merge_pass_1 = require("@bandaloo/merge-pass");
 class Kaleidoscope extends merge_pass_1.WrappedExpr {
     constructor(sides, scale) {
@@ -153,9 +148,10 @@ function kaleidoscope(sides = merge_pass_1.mut(8), scale = merge_pass_1.mut(1)) 
 }
 exports.kaleidoscope = kaleidoscope;
 
-},{"@bandaloo/merge-pass":61}],6:[function(require,module,exports){
+},{"@bandaloo/merge-pass":61}],5:[function(require,module,exports){
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.lightbands = exports.LightBands = void 0;
 const merge_pass_1 = require("@bandaloo/merge-pass");
 class LightBands extends merge_pass_1.WrappedExpr {
     constructor(speed, intensity, threshold, samplerNum) {
@@ -190,14 +186,15 @@ function lightbands(speed = merge_pass_1.mut(4), intensity = merge_pass_1.mut(0.
 }
 exports.lightbands = lightbands;
 
-},{"@bandaloo/merge-pass":61}],7:[function(require,module,exports){
+},{"@bandaloo/merge-pass":61}],6:[function(require,module,exports){
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.noisedisplacement = exports.NoiseDisplacement = void 0;
 const merge_pass_1 = require("@bandaloo/merge-pass");
 const X_OFF = 1234;
 const Y_OFF = 5678;
 class NoiseDisplacement extends merge_pass_1.WrappedExpr {
-    constructor(period = merge_pass_1.mut(0.1), speed = merge_pass_1.mut(1), intensity = merge_pass_1.mut(0.005)) {
+    constructor(period, speed, intensity) {
         const periodFloat = merge_pass_1.float(period);
         const speedFloat = merge_pass_1.float(speed);
         const intensityFloat = merge_pass_1.float(intensity);
@@ -224,10 +221,15 @@ class NoiseDisplacement extends merge_pass_1.WrappedExpr {
     }
 }
 exports.NoiseDisplacement = NoiseDisplacement;
+function noisedisplacement(period = merge_pass_1.mut(0.1), speed = merge_pass_1.mut(1), intensity = merge_pass_1.mut(0.005)) {
+    return new NoiseDisplacement(period, speed, intensity);
+}
+exports.noisedisplacement = noisedisplacement;
 
-},{"@bandaloo/merge-pass":61}],8:[function(require,module,exports){
+},{"@bandaloo/merge-pass":61}],7:[function(require,module,exports){
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.oldfilm = exports.OldFilm = void 0;
 const merge_pass_1 = require("@bandaloo/merge-pass");
 class OldFilm extends merge_pass_1.WrappedExpr {
     constructor(speckIntensity, lineIntensity, grainIntensity) {
@@ -270,9 +272,37 @@ function oldfilm(speckIntensity = merge_pass_1.mut(0.4), lineIntensity = merge_p
 }
 exports.oldfilm = oldfilm;
 
-},{"@bandaloo/merge-pass":61}],9:[function(require,module,exports){
+},{"@bandaloo/merge-pass":61}],8:[function(require,module,exports){
+"use strict";
+var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    Object.defineProperty(o, k2, { enumerable: true, get: function() { return m[k]; } });
+}) : (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    o[k2] = m[k];
+}));
+var __setModuleDefault = (this && this.__setModuleDefault) || (Object.create ? (function(o, v) {
+    Object.defineProperty(o, "default", { enumerable: true, value: v });
+}) : function(o, v) {
+    o["default"] = v;
+});
+var __importStar = (this && this.__importStar) || function (mod) {
+    if (mod && mod.__esModule) return mod;
+    var result = {};
+    if (mod != null) for (var k in mod) if (k !== "default" && Object.hasOwnProperty.call(mod, k)) __createBinding(result, mod, k);
+    __setModuleDefault(result, mod);
+    return result;
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+// @ts-nocheck
+const postpre = __importStar(require("./index"));
+const mergepass = __importStar(require("@bandaloo/merge-pass"));
+window.MP = Object.assign({}, postpre, mergepass);
+
+},{"./index":3,"@bandaloo/merge-pass":61}],9:[function(require,module,exports){
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.vignette = exports.Vignette = void 0;
 const merge_pass_1 = require("@bandaloo/merge-pass");
 class Vignette extends merge_pass_1.EffectLoop {
     constructor(blurScalar, brightnessScalar, brightnessExponent) {
@@ -3720,10 +3750,10 @@ function nameExtractor(sourceLists, extra) {
 }
 /** @ignore */
 function brandWithChannel(sourceLists, funcs, needs, funcIndex, samplerNum) {
-    samplerNum === undefined
+    samplerNum === undefined || samplerNum === -1
         ? (needs.neighborSample = true)
         : (needs.extraBuffers = new Set([samplerNum]));
-    if (samplerNum === undefined)
+    if (samplerNum === undefined || samplerNum === -1)
         return;
     const { origFuncName, newFuncName, ending } = nameExtractor(sourceLists, samplerNum !== undefined ? "_" + samplerNum : "");
     sourceLists.sections[0] = sourceLists.sections[0]
@@ -4014,4 +4044,4 @@ class WebGLProgramLoop {
 }
 exports.WebGLProgramLoop = WebGLProgramLoop;
 
-},{"./settings":63}]},{},[2]);
+},{"./settings":63}]},{},[8]);
