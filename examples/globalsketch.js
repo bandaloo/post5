@@ -5,12 +5,12 @@ let black = false;
 function setup() {
   createCanvas(400, 400);
   background(255);
-  post5.effects = [
-    post5.noisedisplacement(),
-    post5.godrays({ samplerNum: -1, lightPos: post5.nmouse() }),
-    post5.oldfilm(),
-    post5.vignette(),
-  ];
+  addEffects(
+    noiseDisplacement(),
+    godrays({ samplerNum: -1, lightPos: nMouse() }),
+    oldFilm(),
+    vignette()
+  );
 }
 
 function draw() {

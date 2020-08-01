@@ -7,12 +7,12 @@ new p5(function (sketch) {
     const c = sketch.createCanvas(400, 400);
     c.par;
     sketch.background(255);
-    sketch.post5.effects = [
-      sketch.post5.noisedisplacement(),
-      sketch.post5.godrays({ samplerNum: -1, lightPos: sketch.post5.nmouse() }),
-      sketch.post5.oldfilm(),
-      sketch.post5.vignette(),
-    ];
+    sketch.addEffects(
+      sketch.noiseDisplacement(),
+      sketch.godrays({ samplerNum: -1, lightPos: sketch.nMouse() }),
+      sketch.oldFilm(),
+      sketch.vignette()
+    );
   };
 
   sketch.draw = () => {
