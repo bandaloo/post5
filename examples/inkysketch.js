@@ -1,5 +1,4 @@
 // @ts-nocheck
-// p5 sketch running in 'global mode'
 let black = false;
 
 function setup() {

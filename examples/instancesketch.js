@@ -1,11 +1,9 @@
 // @ts-nocheck
-// p5 sketch running in 'instance mode'
 new p5(function (sketch) {
   sketch.black = false;
 
   sketch.setup = () => {
     const c = sketch.createCanvas(400, 400);
-    c.par;
     sketch.background(255);
     sketch.addEffects(
       sketch.noiseDisplacement(),
