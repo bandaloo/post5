@@ -107,7 +107,7 @@
   }
 
   function mpPre() {
-    if (info.replaced) return;
+    if (info.replaced || !info.effects) return;
     if (info.verbosity > 0) console.log("mp pre x1");
 
     info.startTime = new Date().getTime();
@@ -160,7 +160,7 @@
 
   function mpPost() {
     if (info.verbosity > 1) console.log("mp post");
-    if (!info.merger) return;
+    if (!info.effects) return;
     const time = info.startTime - new Date().getTime();
     info.merger.draw(time / 1000, info.mousePos.x, info.mousePos.y);
   }
