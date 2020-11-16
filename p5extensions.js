@@ -77,6 +77,7 @@
   addToProto(pr, "basicFloat", MP.float);
   addToProto(pr, "pFloat", MP.pfloat);
   addToProto(pr, "tag", MP.tag);
+  addToProto(pr, "celShade", MP.celshade);
 
   addToProto(pr, "__info", {
     replaced: false,
