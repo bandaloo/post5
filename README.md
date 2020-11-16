@@ -28,10 +28,14 @@ the `p5` script and before your sketch script:
 
 ## Building
 
+(This build process will be replaced with an easier one soon. postpre will be
+a submodule so the build process isn't divided between two different repos.)
+
 This repo includes `p5bundle.js` produced by the `npm run p5` script in the
-postpre package. Running `sh build.sh` literally justs concatenates
-`p5bundle.js` with `p5extensions.js` (which does the extending of the p5
-prototype) to produce `post5.js`. This file is committed for convenience.
-also, `p5.js` version 1.1.9 is also included so that the examples work out
-the gate. The included examples use `post5.js` so run `sh build.sh` after
-making changes to `p5extensions.js`.
+postpre package available [here](https://github.com/bandaloo/postpre).
+Running `sh build.sh` literally justs concatenates `p5bundle.js` with
+`p5extensions.js` (which does the extending of the p5 prototype) to produce
+`post5.js`. This file is committed for convenience. also, `p5.js` version
+1.1.9 is also included so that the examples work out the gate. The included
+examples use `post5.js` so run `sh build.sh` after making changes to
+`p5extensions.js`.
