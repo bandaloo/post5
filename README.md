@@ -116,12 +116,7 @@ conflicts with p5.
 
 ## Building
 
-(This build process will be replaced with an easier one soon. postpre will be
-a submodule so the build process isn't divided between two different repos.)
-
-This repo includes `p5bundle.js` produced by the `npm run p5` script in the
-postpre package available [here](https://github.com/bandaloo/postpre).
-Running `sh build.sh` literally justs concatenates `p5bundle.js` with
-`p5extensions.js` (which does the extending of the p5 prototype) to produce
-`post5.js`. The included examples use `post5.js` so run `sh build.sh` after
-making changes to `p5extensions.js`.
+Run `sh build.sh`. This will automatically run `npm install` if
+`node_modules` does not exist in the postpre submodule and generate
+`post5.js`, which is the file you include as a script. Run `sh build.sh` to
+run postpre's `npm install` regardless.

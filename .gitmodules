@@ -1,0 +1,4 @@
+[submodule "postpre"]
+	path = postpre
+	url = https://github.com/bandaloo/postpre
+    ignore = dirty
